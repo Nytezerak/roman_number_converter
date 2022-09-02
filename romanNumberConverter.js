@@ -1,6 +1,7 @@
 function romanNumberConverter (romanNumeralInput){
     const numArray = romanNumeralInput.split('');
 
+    //Maps trough roman numeral and converts to it's equivalent
     const decimalsArray = numArray.map(numeral =>{
         switch(numeral){
             case 'I': 
@@ -22,6 +23,9 @@ function romanNumberConverter (romanNumeralInput){
         }
     });
 
+    //Uses reduceRight function to calculate from left to right,
+    //returns + or - based on the romanNumber value that returned
+    //from decimalsArray
     return decimalsArray.reduceRight((accum, current, index, array) =>{
         if(current < array[index+1]){
             return accum - current;
@@ -31,6 +35,6 @@ function romanNumberConverter (romanNumeralInput){
     })
 }
 
-console.log(romanNumberConverter('XVII'))
-console.log(romanNumberConverter('XVIII'))
-console.log(romanNumberConverter('MDCLXVI'))
+console.log(romanNumberConverter('XVII')) //expected 17
+console.log(romanNumberConverter('XVIII')) //expected 18
+console.log(romanNumberConverter('MDCLXVI')) //expected 1666
